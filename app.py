@@ -5,7 +5,7 @@ app.py — веб-інтерфейс для analyzer.py.
     python app.py
     (або подвійний клік по ярлику "Competitor Analyzer — nzarxo ai")
 
-Відкриває http://127.0.0.1:5000 — вставляєш посилання на канали, тиснеш
+Відкриває http://127.0.0.1:5050 — вставляєш посилання на канали, тиснеш
 "Запустити", результати з'являються в таблиці по мірі обробки. Кожен
 рядок одразу дописується в results.csv поруч зі скриптом.
 """
@@ -843,7 +843,7 @@ poll();
 </html>
 """
 
-def already_running(port: int = 5000) -> bool:
+def already_running(port: int = 5050) -> bool:
     """Windows дозволяє кільком процесам слухати той самий порт, і тоді запити
     потрапляють до випадкового (зокрема до старої копії зі застарілим кодом).
     Тому перед стартом перевіряємо, чи сервер уже піднято."""
@@ -856,10 +856,10 @@ def already_running(port: int = 5000) -> bool:
 
 if __name__ == "__main__":
     if already_running():
-        print("Competitor Analyzer — nzarxo ai вже запущено — відкрий http://127.0.0.1:5000")
+        print("Competitor Analyzer — nzarxo ai вже запущено — відкрий http://127.0.0.1:5050")
         sys.exit(0)
     # Самоперевірка у фоні: сторінка відкривається одразу, а несправності
     # (застарілий yt-dlp, відсутня імітація браузера) знаходяться й лікуються
     # самі — без них TikTok мовчки віддає обрізки замість каталогу.
     threading.Thread(target=run_selfcheck, daemon=True).start()
-    app.run(host="127.0.0.1", port=5000, debug=False)
+    app.run(host="127.0.0.1", port=5050, debug=False)  # 5000 зайнятий AirPlay Receiver на macOS

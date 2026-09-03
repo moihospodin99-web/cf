@@ -18,9 +18,9 @@ if command -v ollama >/dev/null 2>&1 && ! curl -s --max-time 2 http://localhost:
     (ollama serve >/dev/null 2>&1 &)
 fi
 
-if curl -s --max-time 2 http://127.0.0.1:5000/ >/dev/null 2>&1; then
+if curl -s --max-time 2 http://127.0.0.1:5050/ >/dev/null 2>&1; then
     echo "Програма вже працює — відкриваю сторінку."
-    open "http://127.0.0.1:5000"
+    open "http://127.0.0.1:5050"
     exit 0
 fi
 
@@ -33,7 +33,7 @@ APP_PID=$!
 # сервер САМ не почне відповідати, до 60 секунд.
 echo "Чекаю запуску сервера (перший раз може бути довше)..."
 for i in $(seq 1 60); do
-    if curl -s --max-time 1 "http://127.0.0.1:5000/" >/dev/null 2>&1; then
+    if curl -s --max-time 1 "http://127.0.0.1:5050/" >/dev/null 2>&1; then
         break
     fi
     if ! kill -0 $APP_PID 2>/dev/null; then
@@ -43,7 +43,7 @@ for i in $(seq 1 60); do
     fi
     sleep 1
 done
-open "http://127.0.0.1:5000"
+open "http://127.0.0.1:5050"
 echo
 echo "Програма працює. Це вікно закривати НЕ можна — воно і є програма."
 echo "Щоб зупинити: Ctrl+C або просто закрий це вікно."
