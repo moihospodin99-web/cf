@@ -1,0 +1,3 @@
+# Скрипти macOS мусять лишатися з LF незалежно від налаштувань git
+# у того, хто клонує: з CRLF bash падає з "bad interpreter: /bin/bash^M".
+*.command text eol=lf

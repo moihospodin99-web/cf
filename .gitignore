@@ -1,0 +1,17 @@
+# Дані користувача й кеші — не версіонуються.
+.env
+results.csv
+app.log
+tiktok_catalog.json
+tiktok_profiles.json
+
+# Важке — качає установник на місці.
+venv/
+python/
+tools/
+
+# Сміття
+__pycache__/
+*.pyc
+*.bak
+.DS_Store

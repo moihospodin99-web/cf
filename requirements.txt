@@ -1,0 +1,6 @@
+flask
+yt-dlp
+faster-whisper
+instaloader
+requests
+curl_cffi
